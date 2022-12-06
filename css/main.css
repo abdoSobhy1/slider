@@ -52,7 +52,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to top, #000, transparent);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
 }
 
 .carousel .slide .text {
