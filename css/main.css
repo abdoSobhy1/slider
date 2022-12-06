@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+.carousel {
+    display: block;
+    width: 90vw;
+    height: 500px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.carousel .slide::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to top, #000, transparent);
+}
+
+.carousel .slide .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    margin: 30px 30px 40px;
+    max-width: 60%;
+}
+
+.carousel img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    padding: 5px 15px 8px;
+    border-radius: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99999999;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel .next {
+    right: 20px;
+}
+
+.carousel .prev {
+    left: 20px;
+}
+
+.carousel .pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.carousel .pagination .indic {
+    aspect-ratio: 1;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel .pagination .indic.active {
+    background-color: white;
+}
