@@ -19,26 +19,29 @@ let indicatorsSelection = function () {
   indicators[index].classList.add("active");
 };
 let nextSlide = function () {
-  if (index < images.length) {
-    prevIndex = index - 1;
-    nextIndex = index + 1;
-    if (nextIndex == images.length) {
-      nextIndex = 0;
-    }
-    if (prevIndex == -1) {
-      prevIndex = images.length - 1;
-    }
-  } else {
-    prevIndex = images.length - 1;
+  if (index == images.length) {
     index = 0;
-    nextIndex = 1;
   }
-  images[index].style.transform = "translateX(0)";
-  images[index].style.zIndex = "99";
-  images[nextIndex].style.transform = "translateX(100%)";
-  images[nextIndex].style.zIndex = "-1";
-  images[prevIndex].style.transform = "translateX(-100%)";
-  images[prevIndex].style.zIndex = "-2";
+  images.forEach((img) => {
+    img.classList.remove("next");
+    img.classList.remove("curr");
+    img.classList.add("prev");
+    images[index].classList.remove("prev");
+    images[index].classList.remove("next");
+    images[index].classList.add("curr");
+    for (let i = index + 1; i < images.length; i++) {
+      images[i].classList.remove("prev");
+      images[i].classList.add("next");
+    }
+    if (index == images.length - 1) {
+      images[0].classList.remove("prev");
+      images[0].classList.add("next");
+    }
+    if (index == 0) {
+      images[images.length - 1].classList.remove("next");
+      images[images.length - 1].classList.add("prev");
+    }
+  });
   indicatorsSelection();
 };
 nextSlide();
@@ -58,23 +61,27 @@ document.querySelector(".next").onclick = function () {
 let prevSlide = function () {
   if (index == -1) {
     index = images.length - 1;
-    prevIndex = index - 1;
-    nextIndex = 0;
-    images[prevIndex].style.transform = "translateX(-100%)";
-    images[prevIndex].style.zIndex = "-1";
-  } else {
-    prevIndex = index - 1;
-    nextIndex = index + 1;
-    if (prevIndex == -1) {
-      prevIndex = images.length - 1;
-    }
   }
-  images[index].style.transform = "translateX(0)";
-  images[index].style.zIndex = "99";
-  images[prevIndex].style.transform = "translateX(-100%)";
-  images[prevIndex].style.zIndex = "-1";
-  images[nextIndex].style.transform = "translateX(100%)";
-  images[nextIndex].style.zIndex = "-2";
+  images.forEach((img) => {
+    img.classList.remove("next");
+    img.classList.remove("curr");
+    img.classList.add("prev");
+    images[index].classList.remove("prev");
+    images[index].classList.remove("next");
+    images[index].classList.add("curr");
+    for (let i = index + 1; i < images.length; i++) {
+      images[i].classList.remove("prev");
+      images[i].classList.add("next");
+    }
+    if (index == images.length - 1) {
+      images[0].classList.remove("prev");
+      images[0].classList.add("next");
+    }
+    if (index == 0) {
+      images[images.length - 1].classList.remove("next");
+      images[images.length - 1].classList.add("prev");
+    }
+  });
 };
 document.querySelector(".prev").onclick = function () {
   clearInterval(timer);
